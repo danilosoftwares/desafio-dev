@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "jest --detectOpenHandles --forceExit",
     "start": "node src/app.js"
   },
   "keywords": [],
