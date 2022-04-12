@@ -1,11 +1,13 @@
 const mysql = require('mysql2');
 const { Sequelize } = require("sequelize");
 
-const host = "localhost";
-const port = 52000;
-const user = "root";
-const password = "mypassword";
-const database = "cnab";
+let adressDb = require('./adress.json');
+
+const host = adressDb.host;
+const port = adressDb.port;
+const user = adressDb.user;
+const password = adressDb.password;
+const database = adressDb.database;
 
 const sequelize = new Sequelize(database, user, password, {
   dialect: "mysql",

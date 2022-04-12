@@ -1,0 +1,7 @@
+{
+  "host" : "localhost",
+  "port" : 52000,
+  "user" : "root",
+  "password" : "mypassword",
+  "database" : "cnab"
+}
