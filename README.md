@@ -18,7 +18,7 @@ git clone https://github.com/danilosoftwares/desafio-dev.git desafio
 cd desafio
 ```
 
-Ao localizar a pasta do projeto **desafio-dev** você deve executar o comando abaixo:
+Ao localizar a pasta do projeto **desafio** você deve executar o comando abaixo:
 
 ```sh
 cd backend
