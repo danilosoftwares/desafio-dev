@@ -11,6 +11,13 @@ O projeto é dividido em duas partes backend e frontend
 > `ATENÇÃO`
 > Esta api foi desenvolvida para fazer conexão com um banco de dados [MySQL](https://www.mysql.com/) onde o mesmo já deve existir e estar pronto para acesso. Os dados de conexão devem ser informados no arquivo [config/adress.js](https://github.com/danilosoftwares/desafio-dev/blob/main/Backend/config/adress.json). Não é necessario que este banco de dados tenha dentro dele um database especifico, pois isso será gerado automaticamente pela api ao ser iniciada.
 
+Clonando o respositório:
+
+```sh
+git clone https://github.com/danilosoftwares/desafio-dev.git desafio
+cd desafio
+```
+
 Ao localizar a pasta do projeto **desafio-dev** você deve executar o comando abaixo:
 
 ```sh
