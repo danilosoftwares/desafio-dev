@@ -5,7 +5,6 @@
 /Frontend/.pnp
 /Backend/database/hardrive
 /Backend/node_modules
-/Backend/public
 .pnp.js
 
 # testing
