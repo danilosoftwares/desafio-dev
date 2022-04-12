@@ -23,7 +23,7 @@ Após executar já será possivel utilizar a api no url http://localhost:4000
 
 ![](demonstracao.gif)
 
-Também será possível acessar a documentação da api atraves da ferramenta swagger:
+Também será possível acessar a documentação da api atraves da ferramenta swagger no url http://localhost:4000/api-docs/
 
 ![](demontracao-swagger.png)
 
