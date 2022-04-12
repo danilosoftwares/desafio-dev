@@ -1,85 +1,85 @@
-# Desafio programação - para vaga desenvolvedor
+# CNAB Parse
 
-Por favor leiam este documento do começo ao fim, com muita atenção.
-O intuito deste teste é avaliar seus conhecimentos técnicos em programação.
-O teste consiste em parsear [este arquivo de texto(CNAB)](https://github.com/ByCodersTec/desafio-ruby-on-rails/blob/master/CNAB.txt) e salvar suas informações(transações financeiras) em uma base de dados a critério do candidato.
-Este desafio deve ser feito por você em sua casa. Gaste o tempo que você quiser, porém normalmente você não deve precisar de mais do que algumas horas.
+## _Projeto simplificado que procura importar um documento cnab e gerar uma lista do mesmo no banco de dados_
 
-# Instruções de entrega do desafio
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-1. Primeiro, faça um fork deste projeto para sua conta no Github (crie uma se você não possuir).
-2. Em seguida, implemente o projeto tal qual descrito abaixo, em seu clone local.
-3. Por fim, envie via email o projeto ou o fork/link do projeto para seu contato Bycoders_ com cópia para rh@bycoders.com.br.
+O projeto é dividido em duas partes backend e frontend
 
-# Descrição do projeto
+## Utilizando
 
-Você recebeu um arquivo CNAB com os dados das movimentações finanaceira de várias lojas.
-Precisamos criar uma maneira para que estes dados sejam importados para um banco de dados.
+> `ATENÇÃO`
+> Esta api foi desenvolvida para fazer conexão com um banco de dados [MySQL](https://www.mysql.com/) onde o mesmo já deve existir e estar pronto para acesso. Os dados de conexão devem ser informados no arquivo [config/adress.js](https://github.com/danilosoftwares/desafio-dev/blob/main/Backend/config/adress.json). Não é necessario que este banco de dados tenha dentro dele um database especifico, pois isso será gerado automaticamente pela api ao ser iniciada.
 
-Sua tarefa é criar uma interface web que aceite upload do [arquivo CNAB](https://github.com/ByCodersTec/desafio-ruby-on-rails/blob/master/CNAB.txt), normalize os dados e armazene-os em um banco de dados relacional e exiba essas informações em tela.
+Ao localizar a pasta do projeto **desafio-dev** você deve executar o comando abaixo:
 
-**Sua aplicação web DEVE:**
+```sh
+cd backend
+npm i
+npm start
+```
 
-1. Ter uma tela (via um formulário) para fazer o upload do arquivo(pontos extras se não usar um popular CSS Framework )
-2. Interpretar ("parsear") o arquivo recebido, normalizar os dados, e salvar corretamente a informação em um banco de dados relacional, **se atente as documentações** que estão logo abaixo.
-3. Exibir uma lista das operações importadas por lojas, e nesta lista deve conter um totalizador do saldo em conta
-4. Ser escrita na sua linguagem de programação de preferência
-5. Ser simples de configurar e rodar, funcionando em ambiente compatível com Unix (Linux ou Mac OS X). Ela deve utilizar apenas linguagens e bibliotecas livres ou gratuitas.
-6. Git com commits atomicos e bem descritos
-7. PostgreSQL, MySQL ou SQL Server
-8. Ter testes automatizados
-9. Docker compose (Pontos extras se utilizar)
-10. Readme file descrevendo bem o projeto e seu setup
-11. Incluir informação descrevendo como consumir o endpoint da API
+Após executar já será possivel utilizar a api no url http://localhost:4000
 
-**Sua aplicação web não precisa:**
+![](demonstracao.gif)
 
-1. Lidar com autenticação ou autorização (pontos extras se ela fizer, mais pontos extras se a autenticação for feita via OAuth).
-2. Ser escrita usando algum framework específico (mas não há nada errado em usá-los também, use o que achar melhor).
-3. Documentação da api.(Será um diferencial e pontos extras se fizer)
+Também será possível acessar a documentação da api atraves da ferramenta swagger:
 
-# Documentação do CNAB
+![](demontracao-swagger.png)
 
-| Descrição do campo  | Inicio | Fim | Tamanho | Comentário
-| ------------- | ------------- | -----| ---- | ------
-| Tipo  | 1  | 1 | 1 | Tipo da transação
-| Data  | 2  | 9 | 8 | Data da ocorrência
-| Valor | 10 | 19 | 10 | Valor da movimentação. *Obs.* O valor encontrado no arquivo precisa ser divido por cem(valor / 100.00) para normalizá-lo.
-| CPF | 20 | 30 | 11 | CPF do beneficiário
-| Cartão | 31 | 42 | 12 | Cartão utilizado na transação 
-| Hora  | 43 | 48 | 6 | Hora da ocorrência atendendo ao fuso de UTC-3
-| Dono da loja | 49 | 62 | 14 | Nome do representante da loja
-| Nome loja | 63 | 81 | 19 | Nome da loja
+# Backend
 
-# Documentação sobre os tipos das transações
+Essencialmente o backend tem como objetivo gerar um banco de dados baseado numa modelagem já definida e tambem gerar endpoints para acesso dos dados, fazendo a interação do front com o banco de dados.
 
-| Tipo | Descrição | Natureza | Sinal |
-| ---- | -------- | --------- | ----- |
-| 1 | Débito | Entrada | + |
-| 2 | Boleto | Saída | - |
-| 3 | Financiamento | Saída | - |
-| 4 | Crédito | Entrada | + |
-| 5 | Recebimento Empréstimo | Entrada | + |
-| 6 | Vendas | Entrada | + |
-| 7 | Recebimento TED | Entrada | + |
-| 8 | Recebimento DOC | Entrada | + |
-| 9 | Aluguel | Saída | - |
+Porta utilizada para api **4000**
 
-# Avaliação
+**Execução**
 
-Seu projeto será avaliado de acordo com os seguintes critérios.
+```sh
+cd backend
+npm i
+npm start
+```
 
-1. Sua aplicação preenche os requerimentos básicos?
-2. Você documentou a maneira de configurar o ambiente e rodar sua aplicação?
-3. Você seguiu as instruções de envio do desafio?
-4. Qualidade e cobertura dos testes unitários.
+**Tecnologias utilizadas:**
 
-Adicionalmente, tentaremos verificar a sua familiarização com as bibliotecas padrões (standard libs), bem como sua experiência com programação orientada a objetos a partir da estrutura de seu projeto.
+- [NodeJS](https://nodejs.dev/)
+- [Sequelize](https://sequelize.org/)
+- [Swagger](https://www.npmjs.com/package/swagger-ui-express)
+- [MySQL](https://www.mysql.com/)
 
-# Referência
+**Endpoints gerados pela api:**
 
-Este desafio foi baseado neste outro desafio: https://github.com/lschallenges/data-engineering
+| Tipo | URL              | O que faz                                                                            |
+| ---- | ---------------- | ------------------------------------------------------------------------------------ |
+| GET  | /api/cnab        | Retorna todos os registros dos cnab's gravados no banco                              |
+| POST | /api/cnab/upload | Envia para api todos os arquivos cnab para tratamento do mesmo pela api              |
+| GET  | /api-docs        | Retorna a documentação da api e permite a interação atraves da ferramenta de swagger |
 
----
+**Banco de dados:**
 
-Boa sorte!
+Esta api já gera todas as tabelas necessarias para o bom funcionamento da ferramenta, todavia a mesma necessita de um banco de dados préviamente pronto, onde o mesmo será acessado e utilizado pelo backend.
+Para a configuração de acesso do banco de dados é necessário preencher os dados do banco de dados no arquivo [config/adress.js](https://github.com/danilosoftwares/desafio-dev/blob/main/Backend/config/adress.json) para o bom funcionamento.
+**Obs: Esta api foi desenvolvida para utilizar um banco de dados do tipo [MySQL](https://www.mysql.com/).**
+
+# Frontend
+
+Essencialmente o frontend tem como objetivo permitir ao usuario final ter de forma visual e fácil a interação com os dados contidos no arquivo cnab. Existem duas rotinas que são executadas no frontend, enviar e listar os dados cnab.
+
+**Compilação**
+
+```sh
+cd frontend
+npm i
+npm run build
+```
+
+**Tecnologias utilizadas:**
+
+- [ReactJS](https://pt-br.reactjs.org/)
+- [Axios](https://axios-http.com/docs/intro)
+- [Styled-Components](https://styled-components.com/)
+
+## License
+
+MIT
